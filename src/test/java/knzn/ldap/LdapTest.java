@@ -8,6 +8,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
@@ -71,9 +72,8 @@ public class LdapTest extends AbstractServerTest {
 
   @Test
   public void testSearch() {
-    Hashtable<String, String> env = InitialDirectoryContextFactory
-            .createBaseEnv("uid=admin, ou=system", "secret", "o=sevenSeas",
-                    "simple");
+    Hashtable<String, String> env = InitialDirectoryContextFactory.createBaseEnv("uid=admin, ou=system", "secret", "o=sevenSeas", "simple");
+    env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.directory.server.jndi.ServerContextFactory");
 
     final LdapTemplate temp = new LdapTemplate(env);
 
@@ -93,9 +93,7 @@ public class LdapTest extends AbstractServerTest {
     assertTrue("list does not contain groups", list.contains("groups"));
   }
 
-  private Set<String> searchDNs(final String filter, final String base, 
-          final int scope)
-          throws NamingException {
+  private Set<String> searchDNs(final String filter, final String base,  final int scope) throws NamingException {
     final DirContext appRoot = ContextFactory.createDir();
 
     final SearchControls controls = new SearchControls();

@@ -18,11 +18,7 @@ public final class InitialDirectoryContextFactory {
     env.put(Context.SECURITY_PRINCIPAL, principle);
     env.put(Context.SECURITY_CREDENTIALS, credentials);
     env.put(Context.SECURITY_AUTHENTICATION, authentication);
-    env.put(Context.INITIAL_CONTEXT_FACTORY, 
-            "org.apache.directory.server.jndi.ServerContextFactory");
-    
-//    env.put(Context.INITIAL_CONTEXT_FACTORY,
-//            "com.sun.jndi.ldap.LdapCtxFactory");
+    env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 
     return env;
   }
