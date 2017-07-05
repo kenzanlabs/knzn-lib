@@ -113,7 +113,7 @@ return searchResult.getAttribute("ou"); }};
 constraints - the search controls that control the search. Can be Null
 
  ## LICENSE
-Copyright 2011 Kenzan, LLC <http://kenzan.com>
+Copyright 2017 Kenzan, LLC <http://kenzan.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
